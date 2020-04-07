@@ -4,6 +4,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,11 +20,11 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Recipe {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String description;
     private Integer prepTime;
     private Integer cookTime;
@@ -30,15 +32,16 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
-    // TODO add
-    // private Difficulty dissiulty;
     
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty dissiulty;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
-    
+
     @Lob
     private Byte[] image;
-    
+
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
