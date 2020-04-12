@@ -10,12 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @Data
 @Entity
@@ -40,5 +36,5 @@ public class Ingredient {
 	this.amount = amount;
 	this.uom = uom;
     }
-    
+
 }
