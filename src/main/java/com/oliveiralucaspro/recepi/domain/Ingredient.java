@@ -11,13 +11,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @Entity
 @NoArgsConstructor
 public class Ingredient {
@@ -41,10 +41,4 @@ public class Ingredient {
 	this.uom = uom;
     }
     
-//    public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom, Recipe recipe) {
-//	this.description = description;
-//	this.amount = amount;
-//	this.uom = uom;
-//	this.recipe = recipe;
-//    }
 }

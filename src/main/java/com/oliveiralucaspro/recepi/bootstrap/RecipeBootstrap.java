@@ -19,22 +19,23 @@ import com.oliveiralucaspro.recepi.repositories.CategoryRepository;
 import com.oliveiralucaspro.recepi.repositories.RecipeRepository;
 import com.oliveiralucaspro.recepi.repositories.UnitOfMeasureRepository;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component
+@RequiredArgsConstructor
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private final CategoryRepository categoryRepository;
     private final RecipeRepository recipeRepository;
     private final UnitOfMeasureRepository unitOfMeasureRepository;
 
-    public RecipeBootstrap(CategoryRepository categoryRepository, RecipeRepository recipeRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
-        this.categoryRepository = categoryRepository;
-        this.recipeRepository = recipeRepository;
-        this.unitOfMeasureRepository = unitOfMeasureRepository;
-    }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
+        log.debug("Loading Bootstrap Data");
     }
 
     private List<Recipe> getRecipes() {

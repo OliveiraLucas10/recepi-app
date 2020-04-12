@@ -7,11 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 @Entity
 public class Notes {
     @Id
@@ -20,7 +18,7 @@ public class Notes {
 
     @OneToOne
     private Recipe recipe;
-    
+
     @Lob
     private String recipeNotes;
 }
