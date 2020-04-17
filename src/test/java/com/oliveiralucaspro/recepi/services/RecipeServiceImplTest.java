@@ -1,7 +1,6 @@
 package com.oliveiralucaspro.recepi.services;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -37,9 +36,9 @@ class RecipeServiceImplTest {
 	recipe.setId(1L);
 
 	when(recipeRepository.findById(anyLong())).thenReturn(Optional.of(recipe));
-	
+
 	Recipe returned = service.findById(1L);
-	
+
 	assertNotNull(returned);
 	verify(recipeRepository).findById(anyLong());
 	verify(recipeRepository, never()).findAll();
