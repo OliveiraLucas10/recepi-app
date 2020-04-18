@@ -1,12 +1,15 @@
 package com.oliveiralucaspro.recepi.services;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,9 +48,20 @@ class RecipeServiceImplTest {
 
     }
 
-//    @Test
-//    void testGetRecipes() {
-//	fail("Not yet implemented");
-//    }
+    @Test
+    void testGetRecipes() {
+	Set<Recipe> recipeSet = new HashSet<>();
+	Recipe recipe = new Recipe();
+	recipe.setId(1L);
+	recipeSet.add(recipe);
+
+	when(recipeRepository.findAll()).thenReturn(recipeSet);
+
+	Set<Recipe> recipes = service.getRecipes();
+
+	assertEquals(1, recipes.size());
+	verify(recipeRepository).findAll();
+	verify(recipeRepository, never()).findById(anyLong());
+    }
 
 }
