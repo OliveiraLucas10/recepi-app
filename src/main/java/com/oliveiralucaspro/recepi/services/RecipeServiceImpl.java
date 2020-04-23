@@ -11,6 +11,7 @@ import com.oliveiralucaspro.recepi.commands.RecipeCommand;
 import com.oliveiralucaspro.recepi.converters.RecipeCommandToRecipe;
 import com.oliveiralucaspro.recepi.converters.RecipeToRecipeCommand;
 import com.oliveiralucaspro.recepi.domain.Recipe;
+import com.oliveiralucaspro.recepi.exceptions.NotFoundException;
 import com.oliveiralucaspro.recepi.repositories.RecipeRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -27,20 +28,24 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Set<Recipe> getRecipes() {
+	log.debug("I'm in the service");
+
 	Set<Recipe> recipeSet = new HashSet<>();
 	recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
 	return recipeSet;
     }
 
     @Override
-    public Recipe findById(Long id) {
-	Optional<Recipe> findById = recipeRepository.findById(id);
+    public Recipe findById(Long l) {
 
-	if (!findById.isPresent()) {
-	    throw new RuntimeException("Recipe not Found!");
+	Optional<Recipe> recipeOptional = recipeRepository.findById(l);
+
+	if (!recipeOptional.isPresent()) {
+	    // throw new RuntimeException("Recipe Not Found!");
+	    throw new NotFoundException("Recipe Not Found");
 	}
 
-	return findById.get();
+	return recipeOptional.get();
     }
 
     @Override
@@ -63,5 +68,4 @@ public class RecipeServiceImpl implements RecipeService {
     public void deleteById(Long idToDelete) {
 	recipeRepository.deleteById(idToDelete);
     }
-
 }
