@@ -1,17 +1,27 @@
 package com.oliveiralucaspro.recepi.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.oliveiralucaspro.recepi.services.RecipeService;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
-@RequestMapping
+@RequiredArgsConstructor
 public class IndexController {
-    
-    @GetMapping({"", "/", "index", "index.html"})
-    public String getIndexPage() {
-	
+
+    private final RecipeService recipeService;
+
+    @GetMapping({ "", "/", "/index" })
+    public String getIndexPage(Model model) {
+	log.debug("Getting Index page");
+
+	model.addAttribute("recipes", recipeService.getRecipes());
+
 	return "index";
     }
-
 }
