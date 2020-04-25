@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.oliveiralucaspro</groupId>
 	<artifactId>recepi-app</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>recepi-app</name>
 	<description>Recipe Application</description>
 
@@ -137,7 +137,7 @@
 	
 	<scm>
 		<developerConnection>scm:git:https://github.com/OliveiraLucas10/recepi-app.git</developerConnection>
-		<tag>recepi-app-0.0.1</tag>
+		<tag>recepi-app-0.0.2</tag>
 	</scm>
 
 </project>
