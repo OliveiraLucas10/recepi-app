@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.oliveiralucaspro</groupId>
 	<artifactId>recepi-app</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>recepi-app</name>
 	<description>Recipe Application</description>
 
