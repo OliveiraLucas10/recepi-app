@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/sf_prod
     username: sf_prod_user
-    password: oblp
+    password: olp
   jpa:
     hibernate:
       ddl-auto: validate
