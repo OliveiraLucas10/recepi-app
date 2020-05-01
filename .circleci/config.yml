@@ -41,6 +41,11 @@ jobs:
         - run: mvn integration-test 
         
         - run:
+          name: Send to CodeCov
+          command: bash <(curl -s hattps://codecov.io/bash)  
+          
+          
+        - run:
             name: Save test results
             command: |
               mkdir -p ~/test-results/junit/
@@ -51,7 +56,4 @@ jobs:
         - store_artifacts:
             path: ~/test-results/junit  
             
-        - run:
-          name: Send to CodeCov
-          command: bash <(curl -s hattps://codecov.io/bash) -f ~/test-results/junit 
            
