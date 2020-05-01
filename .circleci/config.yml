@@ -42,7 +42,7 @@ jobs:
         
         - run:
            name: Send to CodeCov
-           command: bash <(curl -s hattps://codecov.io/bash) -f /home/circleci/test-results/junit/
+           command: bash <(curl -s https://codecov.io/bash) -f /home/circleci/test-results/junit/
         
         - run:
             name: Save test results
