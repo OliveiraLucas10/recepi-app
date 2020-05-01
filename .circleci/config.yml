@@ -41,10 +41,6 @@ jobs:
         - run: mvn integration-test 
         
         - run:
-           name: Send to CodeCov
-           command: bash <(curl -s hattps://codecov.io/bash) -f build/reports/jacoco/codeCoverageReport/codeCoverageReport.xml
-        
-        - run:
             name: Save test results
             command: |
               mkdir -p ~/test-results/junit/
@@ -54,4 +50,8 @@ jobs:
             path: ~/test-results
         - store_artifacts:
             path: ~/test-results/junit  
+            
+        - run:
+          name: Send to CodeCov
+          command: bash <(curl -s hattps://codecov.io/bash) -f /home/circleci/test-results/junit/
            
