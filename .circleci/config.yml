@@ -53,5 +53,5 @@ jobs:
             
         - run:
           name: Send to CodeCov
-          command: bash <(curl -s hattps://codecov.io/bash) -f /home/circleci/test-results/junit/
+          command: bash <(curl -s hattps://codecov.io/bash) -f ~/test-results/junit 
            
