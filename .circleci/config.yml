@@ -52,7 +52,7 @@ jobs:
         - store_artifacts:
             path: ~/test-results/junit  
            
-        - run:
-           name: Send to CodeCov
-           language: java
-           command: bash <(curl -s https://codecov.io/bash) 
+#        - run:
+#           name: Send to CodeCov
+#           language: java
+#           command: bash <(curl -s https://codecov.io/bash) 
